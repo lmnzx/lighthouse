@@ -240,7 +240,7 @@ impl<S: ValidatorStore + 'static, T: SlotClock + 'static> SyncCommitteeService<S
     }
 
     /// Publish sync committee signatures.
-    #[instrument(skip_all, fields(%slot, ?beacon_block_root))]
+    #[instrument(name = "lh_publish_sync_committee_signatures", skip_all, fields(%slot, ?beacon_block_root))]
     async fn publish_sync_committee_signatures(
         &self,
         slot: Slot,
